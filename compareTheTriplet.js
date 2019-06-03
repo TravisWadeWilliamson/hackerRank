@@ -31,22 +31,26 @@ b: an array of integers representing Bob's challenge rating
 ********************************************************/
 
 // Input: 2 arrays of 3 integers each a = [1,2,3], b = [3,2,1]
-// Output: an array of two integers a, b
+// Output: an array of two integers [a, b]
 // Edge cases:
 // Restrictions:    1 < a[i] < 100
 //                  1 < b[i] < 100
-const a = [1,2,3];
-const b = [3,2,1];
+const alice = [1, 2, 3];
+const bob = [3, 2, 1];
+
 const compareTriplets = (a, b) => {
 
-    let pointComparison = [];
+    let aScore = 0;
+    let bScore = 0;
 
-    a.forEach(point => {
-        console.log(a.point)
-    })
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] < b[i]) {
+            bScore++;
+        } else if (a[i] > b[i]) {
+            aScore++;
+        }
+    }
+    return [aScore, bScore]
 }
 
-
-
-
-compareTriplets();
+compareTriplets(alice, bob);
