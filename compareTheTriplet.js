@@ -36,6 +36,9 @@ b: an array of integers representing Bob's challenge rating
 // Edge cases:
 // Restrictions:    1 < a[i] < 100
 //                  1 < b[i] < 100
+
+/* First time through ---------------------------
+
 const alice = [1, 2, 3];
 const bob = [3, 2, 1];
 
@@ -55,3 +58,40 @@ const compareTriplets = (a, b) => {
 }
 
 compareTriplets(alice, bob);
+-----------------------------------------------*/
+
+
+
+const compareTriplets = (aliceRatings, bobRatings) => {
+    //create variables to hold the score of each peron
+    let aliceScore = 0;
+    let bobScore = 0;
+
+    //loop over array a and inside of that loop, loop over array b to compare a[i] and b[j]
+    for (let i = 0; i < aliceRatings.length; i++) {
+        //conditional statements to compare bob and alices ratings to then give a score
+        // If a[i] > b[i], then Alice is awarded  point. 1 
+        if (aliceRatings[i] > bobRatings[i]) {
+            aliceScore++;
+        }
+        
+        // If a[i] < b[i], then Bob is awarded  point. 1
+        if (aliceRatings[i] < bobRatings[i]) {
+            bobScore++;
+        }
+        // If a[i] = b[i], then neither person receives a point. 
+    }
+    
+    //push the results into the empty array 
+    return [aliceScore, bobScore]
+}
+
+const a = [1,2,3];
+const b = [3,2,1]; 
+
+console.log('TEST A: 1, 2, 3 and 3, 2, 1 should be [1, 1]', compareTriplets(a, b))
+
+const aliceR = [3, 3, 3]
+const bobR = [1, 1, 1]
+
+console.log('TEST B: 3, 3, 3 and 1, 1, 1 should be [3, 0]', compareTriplets(aliceR, bobR))
